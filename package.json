@@ -1,0 +1,41 @@
+{
+  "name": "@gemstation/contracts-hardhat",
+  "version": "1.0.0",
+  "description": "Gemforge diamond standard contracts scaffolding using Hardhat.",
+  "license": "MIT",
+  "scripts": {
+    "prepare": "husky install && npx husky add .husky/commit-msg 'npx commitlint --edit $1'",
+    "prettify": "prettier --write .",
+    "devnet": "node",
+    "clean": "hardhat clean",
+    "test": "hardhat test",
+    "test-cov": "hardhat coverage",
+    "build": "gemforge build",
+    "dep": "gemforge deploy"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "hardhat": "^2.17.1",
+    "@commitlint/cli": "^17.2.0",
+    "@commitlint/config-conventional": "^17.2.0",
+    "@types/node": "^18.16.16",
+    "dotenv": "^16.3.1",
+    "execa": "^8.0.1",
+    "husky": "^8.0.2",
+    "prettier": "^2.8.8",
+    "solc": "^0.8.21",
+    "solhint": "^3.3.7",
+    "solidity-coverage": "^0.7.21",
+    "solidity-docgen": "^0.5.17",
+    "gemforge": "^1.0.0"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "engineStrict": true
+}

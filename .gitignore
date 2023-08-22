@@ -1,0 +1,21 @@
+.env
+coverage
+coverage.json
+lcov.info
+lcov*.info
+typechain
+results.sarif
+
+# Typescript
+*.tsbuildinfo
+
+# yarn v1, node
+node_modules
+
+# Hardhat files
+cache/
+artifacts
+forge-artifacts
+
+# VS Code
+.vscode
