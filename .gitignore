@@ -8,6 +8,7 @@ results.sarif
 
 # Typescript
 *.tsbuildinfo
+typechain-types
 
 # yarn v1, node
 node_modules
