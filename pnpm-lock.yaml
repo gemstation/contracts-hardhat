@@ -24,8 +24,8 @@ devDependencies:
     specifier: ^8.0.1
     version: 8.0.1
   gemforge:
-    specifier: link:/Users/ram/dev/gemstation/gemforge
-    version: 1.2.0
+    specifier: ^1.3.0
+    version: 1.3.0
   hardhat:
     specifier: ^2.17.1
     version: 2.17.1(ts-node@10.9.1)(typescript@5.1.6)
@@ -4015,8 +4015,8 @@ packages:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
     dev: true
 
-  /gemforge@1.2.0:
-    resolution: {integrity: sha512-qaiUjHLjhV0fhiZSx9zZz9XUcuNMxM/CW/zCtWtIb8nTivMV+Z2IesS54L086hRmoh7PwJ9gblnmBIzWDNlbhw==}
+  /gemforge@1.3.0:
+    resolution: {integrity: sha512-rbEPgvA+Ce6Uuv+eeEa6FY7JyG92MYTzD8X6E4xGpMhV8mq1y59iDyanEF/Tx0dKppPZGiA85Vs7HniNUwENUw==}
     engines: {node: '>=20.0.0'}
     hasBin: true
     dependencies:
