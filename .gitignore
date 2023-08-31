@@ -20,3 +20,6 @@ forge-artifacts
 
 # VS Code
 .vscode
+
+# Gemforge
+gemforge.deployments.json

@@ -3,7 +3,7 @@ pragma solidity >=0.8.21;
 
 import { ERC20 } from "../facades/ERC20.sol";
 import { IERC20Facet } from "../interfaces/IERC20Facet.sol";
-import { ERC20Token } from "../shared/Structs.sol";
+import { ERC20Token, ERC20TokenConfig } from "../shared/Structs.sol";
 import { LibERC20 } from "../libs/LibERC20.sol";
 import { AccessControl } from "../shared/AccessControl.sol";
 import { LibAppStorage } from "../libs/LibAppStorage.sol";
@@ -28,17 +28,17 @@ contract ERC20Facet is IERC20Facet, AccessControl {
   */
 
 
-  function erc20DeployToken(string memory name, string memory symbol, uint8 decimals) isAdmin() external {
-    if (LibString.len(name) == 0 || LibString.len(symbol) == 0 || decimals == 0) {
+  function erc20DeployToken(ERC20TokenConfig memory config) isAdmin() external {
+    if (LibString.len(config.name) == 0 || LibString.len(config.symbol) == 0 || config.decimals == 0) {
       revert ERC20InvalidInput();
     }
 
     address token = address(new ERC20(this));
 
     ERC20Token storage t = LibAppStorage.diamondStorage().erc20s[token];
-    t.name = name;
-    t.symbol = symbol;
-    t.decimals = decimals;
+    t.name = config.name;
+    t.symbol = config.symbol;
+    t.decimals = config.decimals;
 
     LibERC20.mint(token, msg.sender, 100);
 

@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity >=0.8.21;
 
+import "../shared/Structs.sol";
 
 /**
  * @dev ERC20 diamond facet interface.
@@ -9,11 +10,9 @@ interface IERC20Facet {
   /**
    * @dev Deploy new token.
    * 
-   * @param name The name of the token.
-   * @param symbol The symbol of the token.
-   * @param decimals The decimals places of the token.
+   * @param config Token config.
    */
-  function erc20DeployToken(string memory name, string memory symbol, uint8 decimals) external;
+  function erc20DeployToken(ERC20TokenConfig memory config) external;
 
   /**
    * @dev Returns the name of the token.

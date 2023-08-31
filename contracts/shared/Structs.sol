@@ -14,3 +14,8 @@ struct ERC20Token {
   uint256 totalSupply;
 }
 
+struct ERC20TokenConfig {
+  string name;
+  string symbol;
+  uint8 decimals;
+}
