@@ -1,4 +1,5 @@
-describe("BasicTests", function () {
-  it('will pass', async function () {
-  })
+describe("Basic tests", function () {
+  it("exampleFunction()", async function () {
+    
+  });
 });

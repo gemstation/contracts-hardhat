@@ -31,15 +31,15 @@ contract ERC20 is IERC20, IERC20Metadata, MetaContext {
   */
 
   function name() public view override returns (string memory) {
-    return _parent.erc20Name(address(this));
+    return _parent.erc20Name();
   }
 
   function symbol() public view override returns (string memory) {
-    return _parent.erc20Symbol(address(this));
+    return _parent.erc20Symbol();
   }  
 
   function decimals() public view override returns (uint8) {
-    return _parent.erc20Decimals(address(this));
+    return _parent.erc20Decimals();
   }
 
   /*
@@ -47,30 +47,30 @@ contract ERC20 is IERC20, IERC20Metadata, MetaContext {
   */
 
   function totalSupply() public view override returns (uint256) {
-    return _parent.erc20TotalSupply(address(this));
+    return _parent.erc20TotalSupply();
   }
 
   function balanceOf(address account) public view override returns (uint256) {
-    return _parent.erc20BalanceOf(address(this), account);
+    return _parent.erc20BalanceOf(account);
   }
 
   function allowance(address owner, address spender) public view override returns (uint256) {
-    return _parent.erc20Allowance(address(this), owner, spender);
+    return _parent.erc20Allowance(owner, spender);
   }
 
   function approve(address spender, uint256 amount) public override returns (bool) {
-    _parent.erc20Approve(address(this), _msgSender(), spender, amount);
+    _parent.erc20Approve(_msgSender(), spender, amount);
     return true;
   }
 
   function transfer(address recipient, uint256 amount) public override returns (bool) {
     address caller = _msgSender();
-    _parent.erc20Transfer(address(this), caller, caller, recipient, amount);
+    _parent.erc20Transfer(caller, caller, recipient, amount);
     return true;
   }
 
   function transferFrom(address sender, address recipient, uint256 amount) public override returns (bool) {
-    _parent.erc20Transfer(address(this), _msgSender(), sender, recipient, amount);
+    _parent.erc20Transfer(_msgSender(), sender, recipient, amount);
     return true;
   }
 }
