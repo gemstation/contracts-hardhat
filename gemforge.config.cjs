@@ -1,5 +1,6 @@
 require('dotenv').config()
 module.exports = {
+  version: 2,
   solc: {
     // SPDX License - to be inserted in all generated .sol files
     license: 'MIT',
@@ -57,7 +58,12 @@ module.exports = {
     // Whether to include public methods when generating the IDiamondProxy interface. Default is to only include external methods.
     publicMethods: false,
     // The diamond initialization contract - to be called when first deploying the diamond.
-    init: 'InitDiamond',
+    init: {
+      // The diamond initialization contract name
+      contract: 'InitDiamond',
+      // The diamond initialization function name
+      function: 'init',
+    },  
     // Names of core facet contracts - these will not be modified/removed once deployed and are also reserved names.
     // This default list is taken from the diamond-2-hardhat library.
     // NOTE: we recommend not removing any of these existing names unless you know what you are doing.
@@ -110,15 +116,30 @@ module.exports = {
     local: {
       // RPC endpoint URL
       rpcUrl: 'http://localhost:8545',
-      // Wallet to use for deployment
-      wallet: 'wallet1',
     },
     // Sepolia network
     sepolia: {
       // RPC endpoint URL
       rpcUrl: () => process.env.SEPOLIA_RPC_URL,
+    }
+  },
+  // Targets to deploy
+  targets: {
+    local: {
+      // Network to deploy to
+      network: 'local',
+      // Wallet to use for deployment
+      wallet: 'wallet1',
+      // Initialization function arguments
+      initArgs: [],
+    },
+    testnet: {
+      // Network to deploy to
+      network: 'sepolia',
       // Wallet to use for deployment
       wallet: 'wallet2',
+      // Initialization function arguments
+      initArgs: [],
     }
   }
 }

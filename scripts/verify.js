@@ -1,23 +1,29 @@
-const addresses = require("../gemforge.deployments.json")
-
 const hre = globalThis.hre;
 
 (async () => {
   const { $ } = (await import('execa'))
   const rootFolder = process.cwd()
 
-  const chainId = process.env.GEMFORGE_DEPLOY_CHAIN_ID;
-  if (!chainId) {
-    throw new Error("GEMFORGE_DEPLOY_CHAIN_ID env var not set");
+  const deploymentInfo = require('../gemforge.deployments.json')
+
+  const target = process.env.GEMFORGE_DEPLOY_TARGET
+  if (!target) {
+    throw new Error('GEMFORGE_DEPLOY_TARGET env var not set')
   }
 
   // skip localhost
-  if (chainId === "31337") {
-    console.log("Skipping verification on localhost");
-    return;
+  if (target === 'local') {
+    console.log('Skipping verification on local')
+    return
   }
 
-  console.log(`Verifying on chain ${chainId} ...`);
+  console.log(`Verifying for target ${target} ...`);
+
+  const { chainId, contracts = [] } = deploymentInfo[target] || {}
+
+  if (!chainId) {
+    throw new Error(`No chainId found for target ${target}`);
+  }
 
   const networkName = Object.keys(hre.config.networks).find((name) => {
     return hre.config.networks[name].chainId === parseInt(chainId);
@@ -29,23 +35,21 @@ const hre = globalThis.hre;
 
   console.log(`Network name: ${networkName}`);
 
-  const contracts = addresses[chainId] || [];
-
-  for (let { name, fullyQualifiedName, contract } of contracts) {
+  for (let { name, fullyQualifiedName, onChain } of contracts) {
     let args = "";
 
-    if (contract.constructorArgs.length) {
-      args = contract.constructorArgs.join(", ")
+    if (onChain.constructorArgs.length) {
+      args = onChain.constructorArgs.join(", ")
     }
 
     console.log(
-      `Verifying ${name} [${fullyQualifiedName}]  at ${ contract.address } with args ${args}`
+      `Verifying ${name} [${fullyQualifiedName}]  at ${onChain.address} with args ${args}`
     );
 
     if (args) {
-      await $({ cwd: rootFolder })`npx hardhat verify --network ${networkName} --contract ${fullyQualifiedName} ${contract.address} ${args}`
+      await $({ cwd: rootFolder })`npx hardhat verify --network ${networkName} --contract ${fullyQualifiedName} ${onChain.address} ${args}`
     } else {
-      await $({ cwd: rootFolder })`npx hardhat verify --network ${networkName} --contract ${fullyQualifiedName} ${contract.address}`
+      await $({ cwd: rootFolder })`npx hardhat verify --network ${networkName} --contract ${fullyQualifiedName} ${onChain.address}`
     }
 
     console.log(`Verified!`);

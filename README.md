@@ -13,6 +13,8 @@ There are two facets provided:
 * `ExampleFacet` - a simple example of a facet with a single function. Try adding and removing functions to/from this facet to see how the Gemforge deployment changes.
 * `ERC20Facet` - a complex example demonstrating how to deploy multiple separate ERC20s token contracts all internally backed by the same upgradeable diamond proxy ([read more](https://hiddentao.com/archives/2023/08/08/building-multiple-nft-and-erc-20-tokens-backed-by-a-single-upgradeable-smart-contract)).
 
+_Note: A Foundry equivalent of this repo is available at https://github.com/gemstation/contracts-foundry_
+
 ## Requirements
 
 * [Node.js 20+](https://nodejs.org)
@@ -59,13 +61,13 @@ $ pnpm build
 To deploy to the local node:
 
 ```
-$ pnpm dep
+$ pnpm dep local
 ```
 
 To deploy to Sepolia testnet:
 
 ```
-$ pnpm dep sepolia
+$ pnpm dep testnet
 ```
 
 For verbose output simply add `-v`:
