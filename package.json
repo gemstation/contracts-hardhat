@@ -20,7 +20,7 @@
     "@types/node": "^18.16.16",
     "dotenv": "^16.3.1",
     "execa": "^8.0.1",
-    "gemforge": "^2.6.0",
+    "gemforge": "^2.6.1",
     "hardhat": "^2.17.1",
     "husky": "^8.0.2",
     "prettier": "^2.8.8",
