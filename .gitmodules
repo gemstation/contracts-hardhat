@@ -3,4 +3,5 @@
 	url = https://github.com/OpenZeppelin/openzeppelin-contracts
 [submodule "lib/diamond-2-hardhat"]
 	path = lib/diamond-2-hardhat
-	url = https://github.com/mudgen/diamond-2-hardhat
+	url = https://github.com/gemstation/diamond-2-hardhat
+	branch = gemforge-2
