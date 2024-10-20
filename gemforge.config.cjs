@@ -80,7 +80,7 @@ module.exports = {
     // shell command to execute before deploy
     preDeploy: "",
     // shell command to execute after deploy
-    postDeploy: "npx hardhat run scripts/verify.js",
+    postDeploy: "",
   },
   // Wallets to use for deployment
   wallets: {
@@ -97,14 +97,12 @@ module.exports = {
       },
     },
     wallet2: {
-      // Wallet type - mnemonic
-      type: "mnemonic",
+      // Wallet type - private key
+      type: "private-key",
       // Wallet config
       config: {
-        // Mnemonic phrase
-        words: () => process.env.MNEMONIC,
-        // 0-based index of the account to use
-        index: 0,
+        // Private key
+        key: () => process.env.PRIVATE_KEY,
       },
     },
   },
@@ -115,10 +113,16 @@ module.exports = {
       // RPC endpoint URL
       rpcUrl: "http://localhost:8545",
     },
-    // Sepolia network
-    sepolia: {
+    // Base Sepolia network
+    base_sepolia: {
       // RPC endpoint URL
-      rpcUrl: () => process.env.SEPOLIA_RPC_URL,
+      rpcUrl: 'https://sepolia.base.org',
+      // contract verification service
+      contractVerification: {
+        hardhat: {
+          networkId: 'base_sepolia',
+        },
+      },
     },
   },
   // Targets to deploy
@@ -135,13 +139,11 @@ module.exports = {
     },
     testnet: {
       // Network to deploy to
-      network: "sepolia",
+      network: "base_sepolia",
       // Wallet to use for deployment
       wallet: "wallet2",
       // Initialization function arguments
       initArgs: [],
-      // CREATE3 salt
-      create3Salt: SALT,
     },
   },
 };

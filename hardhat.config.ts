@@ -1,17 +1,28 @@
 require("dotenv").config();
-import { HardhatUserConfig } from "hardhat/config";
+import type { HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox";
 
 const config: HardhatUserConfig = {
   solidity: "0.8.21",
   networks: {
-    sepolia: {
-      chainId: 11155111,
-      url: process.env.SEPOLIA_RPC_URL,
-    },
+    base_sepolia: {
+      url: 'https://sepolia.base.org',
+    }
   },
   etherscan: {
-    apiKey: process.env.ETHERSCAN_API_KEY,
+    apiKey: {
+      base_sepolia: process.env.BASESCAN_API_KEY
+    },
+    customChains: [
+      {
+        network: "base_sepolia",
+        chainId: 84532,
+        urls: {
+          apiURL: "https://api-sepolia.basescan.org/api",
+          browserURL: "https://sepolia.basescan.org"
+        }
+      }
+    ]    
   },
 };
 
