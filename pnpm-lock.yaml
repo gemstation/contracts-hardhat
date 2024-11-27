@@ -27,8 +27,8 @@ importers:
         specifier: ^8.0.1
         version: 8.0.1
       gemforge:
-        specifier: ^2.13.1
-        version: 2.13.1
+        specifier: ^2.14.0
+        version: 2.14.0
       hardhat:
         specifier: ^2.22.13
         version: 2.22.13(ts-node@10.9.1(@types/node@18.16.16)(typescript@5.1.6))(typescript@5.1.6)
@@ -1495,8 +1495,8 @@ packages:
   functions-have-names@1.2.3:
     resolution: {integrity: sha512-xckBUXyTIqT97tq2x2AMb+g163b5JFysYk0x4qxNFwbfQkmNZoiRHb6sPzI9/QV33WeuvVYBUIiD4NzNIyqaRQ==}
 
-  gemforge@2.13.1:
-    resolution: {integrity: sha512-cJZbhvD1Zy5RRN2fMVnHdl2TzJLldD1+wNQnJiLeqDjspnaRTBxuVd1jQAZjAL3rQw0XK+LvxkZvvF3r0TEGDQ==}
+  gemforge@2.14.0:
+    resolution: {integrity: sha512-b9Ji69WJXXLaCvcGSsTaT+1T1eby4luZT8yS/HOaRRhtJrq8nFUbA2ZN2RqTOOo9eke+7LjWQlDlPeQLY4ANiQ==}
     engines: {node: '>=20.0.0'}
     hasBin: true
 
@@ -5023,7 +5023,7 @@ snapshots:
 
   functions-have-names@1.2.3: {}
 
-  gemforge@2.13.1:
+  gemforge@2.14.0:
     dependencies:
       '@solidity-parser/parser': 0.16.1
       bigval: 1.7.0

@@ -73,7 +73,19 @@ $ export BASESCAN_API_KEY=<api key obtained from basescan.org>
 Now run:
 
 ```shell
-$ pnpm dep base_sepolia
+$ pnpm dep testnet
+```
+
+To check the deployment:
+
+```shell
+pnpm query testnet
+```
+
+To verify the sourcecode in Basescan run:
+
+```shell
+$ pnpm verify testnet
 ```
 
 If you visit https://sepolia.basescan.org you should see the deployed contracts along with verified source code.
